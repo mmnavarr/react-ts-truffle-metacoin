@@ -38,8 +38,8 @@ class App extends React.Component<{}, IAppState> {
           <Navigation {...this.state}/>
           {/* <Route {...this.state} path="*" component={Buy}/> */}
           {/* tslint:disable-next-line:jsx-boolean-value */}
-          <Route {...this.state} exact path="/" component={Buy}/>
-          <Route {...this.state} path="/send" component={Send}/>
+          <Route {...this.state.web3} exact path="/" component={Buy}/>
+          <Route {...this.state.web3} path="/send" component={Send}/>
         </div>
       </Router>
     );

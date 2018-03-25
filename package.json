@@ -54,6 +54,7 @@
     }
   },
   "dependencies": {
+    "@types/react-router": "^4.0.23",
     "bignumber.js": "^4.1.0",
     "bluebird": "^3.5.1",
     "ethereumjs-util": "^5.1.2",

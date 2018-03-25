@@ -10,7 +10,8 @@ class Buy extends React.Component<IBuyProps, {}> {
 
     constructor(props) {
         super(props);
-      }
+        console.log(this.props.web3);
+    }
 
     public render() {
         return (
