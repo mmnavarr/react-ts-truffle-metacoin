@@ -16,7 +16,7 @@ interface IMetaWalletState {
   contractAddress: string;
 }
 
-export default class MetaWallet extends React.Component<IMetaWalletProps, IMetaWalletState> {
+class MetaWallet extends React.Component<IMetaWalletProps, IMetaWalletState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,3 +64,5 @@ export default class MetaWallet extends React.Component<IMetaWalletProps, IMetaW
     );
   }
 }
+
+export default MetaWallet;
