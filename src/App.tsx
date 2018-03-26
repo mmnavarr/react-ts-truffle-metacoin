@@ -13,6 +13,7 @@ import Send from "./components/Send";
 
 interface IAppState {
   web3: Web3;
+  ready: boolean;
 }
 
 class App extends React.Component<{}, IAppState> {
@@ -21,6 +22,7 @@ class App extends React.Component<{}, IAppState> {
     super(props);
     this.state = {
       web3: null,
+      ready: false,
     };
   }
 
@@ -28,21 +30,26 @@ class App extends React.Component<{}, IAppState> {
     const web3 = await getWeb3();
     this.setState({
       web3,
+      ready: true,
     });
   }
 
   public render() {
-    return (
-      <Router>
-        <div className={appStyles.app}>
-          <Navigation {...this.state}/>
-          {/* <Route {...this.state} path="*" component={Buy}/> */}
-          {/* tslint:disable-next-line:jsx-boolean-value */}
-          <Route {...this.state.web3} exact path="/" component={Buy}/>
-          <Route {...this.state.web3} path="/send" component={Send}/>
-        </div>
-      </Router>
-    );
+    if (!this.state.ready) {
+      return ("");
+    } else {
+      console.log(this.state);
+      return (
+        <Router>
+          <div className={appStyles.app}>
+            <Navigation {...this.state}/>
+            {/* <Route {...this.state} path="*" component={Buy}/> */}
+            <Route exact={true} path="/" render={() => (<Buy web3={this.state.web3} />)}/>
+            <Route exact={true} path="/send" render={() => (<Send web3={this.state.web3} />)}/>
+          </div>
+        </Router>
+      );
+    }
   }
 }
 
